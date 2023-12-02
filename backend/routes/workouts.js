@@ -7,8 +7,14 @@ const {
     updateWorkout
 } = require('../controllers/workoutController');
 
+// middleware
+const requireAuth = require('../middleware/requireAuth')
+
+// express router
 const router = express.Router();
 
+// use middleware, require auth for all workout routes
+router.use(requireAuth);
 
 // GET all workouts
 router.get('/', getAllWorkouts);
